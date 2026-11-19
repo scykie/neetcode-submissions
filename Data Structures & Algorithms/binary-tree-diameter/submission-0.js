@@ -1,0 +1,30 @@
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     constructor(val = 0, left = null, right = null) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+class Solution {
+    /**
+     * @param {TreeNode} root
+     * @return {number}
+     */
+    diameterOfBinaryTree(root) {
+        let best = 0;
+
+        function depth(node) {
+            if (!node) return 0;
+            const [left, right] = [depth(node.left), depth(node.right)];
+            best = Math.max(best, left + right);
+            return 1 + Math.max(left, right);
+        }
+
+        depth(root)
+        return best
+    }
+}
